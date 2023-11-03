@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to the world of pug #{title}
+  button(type="button" class="btn btn-secondary" onclick="goFaster()") Press me to go more Faster
+  div#faster Increase the speed.
+  script.
+     let mph=20;
+     let change=1;
+     function goFaster() {
+        mph=mph+change;
+        change=change+1;
+        document.getElementById("faster").innerText= `MPH ${mph} with change ${change}`
+     }
+   
+ 
+
+      console.log("running at http://localhost:3000/")
+  a(href='/Giraffe') LinktoGiraffeworld
+
+

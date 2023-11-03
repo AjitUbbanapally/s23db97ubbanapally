@@ -1,0 +1,16 @@
+extends layout  
+block content
+    div(class="container-fluid")
+        h1= title
+    - let results=[{Giraffe_breed:"Reticulated giraffe",Giraffe_age:"5",Giraffe_heightfeet:15},{Giraffe_breed:"Masai giraffe",Giraffe_age:"6",Giraffe_heightfeet:16},{Giraffe_breed:"South African giraffe",Giraffe_age:"8",Giraffe_heightfeet:18}]
+        div(class="row")
+            each form,item in results
+                div(class = "col-sm-2 bg-primary" onclick=`buy(${item})`) #{form.Giraffe_breed}              
+                div(class = "col-sm-2 bg-secondary" onclick=`buy(${item})`) #{form.Giraffe_age}                
+                div(class = "col-sm-2 bg-success" onclick=`buy(${item})`) #{form.Giraffe_heightfeet}
+                hr
+    script.
+        function buy(itemNo)
+        {
+            alert(`You purchased Item ${itemNo+1}`) 
+        }            

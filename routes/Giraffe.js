@@ -1,9 +1,6 @@
 var express = require('express');
+const Giraffe_controlers= require('../controllers/Giraffe');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Giraffe', { title: 'Search Results Giraffe' });
-});
-
+/* GET Giraffe */
+router.get('/', Giraffe_controlers.Giraffe_view_all_Page );
 module.exports = router;

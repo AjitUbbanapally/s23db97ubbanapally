@@ -56,6 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
+MONGO_CON= 'your connection string'
 
 # next.js build output
 .next

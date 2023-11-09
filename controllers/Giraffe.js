@@ -60,4 +60,5 @@ exports.Giraffe_detail = function(req, res) {
         res.status(500);
         res.send(`{"error": ${err}}`);
         }
+        
         };

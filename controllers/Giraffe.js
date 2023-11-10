@@ -48,7 +48,7 @@ failed`);
 exports.Giraffe_view_all_Page = async function (req, res) {
   try {
     theGiraffe = await Giraffe.find();
-    console.log(theGiraffe);
+    //console.log(theGiraffe);
     res.render('Giraffe', { title: 'Giraffe Search Results', results: theGiraffe });
   }
   catch (err) {
@@ -94,5 +94,5 @@ exports.Giraffe_create_post = async function (req, res) {
     res.send(`{"error": ${err}}`);
 
   }
-
+  
 };

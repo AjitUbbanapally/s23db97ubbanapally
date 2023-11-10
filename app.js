@@ -54,29 +54,29 @@ app.use('/resource', resourceRouter);
 async function recreateDB(){
 // Delete everything
 await Giraffe.deleteMany();
-let instance1 = new
-Giraffe({Giraffe_breed:"Reticulated giraffe",Giraffe_age:5,Giraffe_heightfeet:15});
-instance1.save().then(doc=>{
-console.log("First object saved")}
-).catch(err=>{
-console.error(err)
-});
+// let instance1 = new
+// Giraffe({Giraffe_breed:"Reticulated giraffe",Giraffe_age:5,Giraffe_heightfeet:15});
+// instance1.save().then(doc=>{
+// console.log("First object saved")}
+// ).catch(err=>{
+// console.error(err)
+// });
 
-let instance2 = new
-Giraffe({Giraffe_breed:"Masai giraffe",Giraffe_age:6,Giraffe_heightfeet:16});
-instance2.save().then(doc=>{
-  console.log("second object saved")}
-  ).catch(err=>{
-  console.error(err)
-  });
+// let instance2 = new
+// Giraffe({Giraffe_breed:"Masai giraffe",Giraffe_age:6,Giraffe_heightfeet:16});
+// instance2.save().then(doc=>{
+//   console.log("second object saved")}
+//   ).catch(err=>{
+//   console.error(err)
+//   });
 
-  let instance3 = new
-Giraffe({Giraffe_breed:"South African giraffe",Giraffe_age:8,Giraffe_heightfeet:18});
-instance3.save().then(doc=>{
-  console.log("Third object saved")}
-  ).catch(err=>{
-  console.error(err)
-  });
+//   let instance3 = new
+// Giraffe({Giraffe_breed:"South African giraffe",Giraffe_age:8,Giraffe_heightfeet:18});
+// instance3.save().then(doc=>{
+//   console.log("Third object saved")}
+//   ).catch(err=>{
+//   console.error(err)
+//   });
 
 }
 let reseed = true;

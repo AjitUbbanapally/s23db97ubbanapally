@@ -17,9 +17,29 @@ exports.Giraffe_list = async function (req, res) {
 exports.Giraffe_delete = function (req, res) {
   res.send('NOT IMPLEMENTED: Giraffe delete DELETE ' + req.params.id);
 };
+// // Handle Giraffe update form on PUT.
+// exports.Giraffe_update_put = function (req, res) {
+//   res.send('NOT IMPLEMENTED: Giraffe update PUT' + req.params.id);
+// };
+
 // Handle Giraffe update form on PUT.
-exports.Giraffe_update_put = function (req, res) {
-  res.send('NOT IMPLEMENTED: Giraffe update PUT' + req.params.id);
+exports.Giraffe_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await Giraffe.findById( req.params.id)
+// Do updates of properties
+if(req.body.Giraffe_breed)toUpdate.Giraffe_breed = req.body.Giraffe_breed;
+if(req.body.Giraffe_age) toUpdate.Giraffe_age = req.body.Giraffe_age;
+if(req.body.Giraffe_heightfeet) toUpdate.Giraffe_heightfeet = req.body.Giraffe_heightfeet;
+let result = await toUpdate.save();
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
 
 
@@ -40,9 +60,10 @@ exports.Giraffe_view_all_Page = async function (req, res) {
 // for a specific Giraffe.
 
 exports.Giraffe_detail = async function (req, res) {
-  console.log("detail" + req.params.id)
+  //console.log("detail" + req.params.id)
   try {
     result = await Giraffe.findById(req.params.id)
+    console.log(result);
     res.send(result)
   } catch (error) {
     res.status(500)

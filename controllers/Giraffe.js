@@ -14,9 +14,21 @@ exports.Giraffe_list = async function (req, res) {
 
 
 // Handle Giraffe delete form on DELETE.
-exports.Giraffe_delete = function (req, res) {
-  res.send('NOT IMPLEMENTED: Giraffe delete DELETE ' + req.params.id);
-};
+// exports.Giraffe_delete = function (req, res) {
+//   res.send('NOT IMPLEMENTED: Giraffe delete DELETE ' + req.params.id);
+// };
+exports.Giraffe_delete = async function(req, res) {
+  console.log("delete " + req.params.id)
+  try {
+  result = await Giraffe.findByIdAndDelete( req.params.id)
+  console.log("Removed " + result)
+  res.send(result)
+  } catch (err) {
+  res.status(500)
+  res.send(`{"error": Error deleting ${err}}`);
+  }
+  };
+
 // // Handle Giraffe update form on PUT.
 // exports.Giraffe_update_put = function (req, res) {
 //   res.send('NOT IMPLEMENTED: Giraffe update PUT' + req.params.id);

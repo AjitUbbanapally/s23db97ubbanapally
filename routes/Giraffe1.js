@@ -10,7 +10,10 @@ router.get('/', Giraffe_controlers.Giraffe_view_all_Page );
 
 
 
-/* GET detail costume page */
+/* GET detail Giraffe page */
 
 router.get('/detail', Giraffe_controlers.Giraffe_view_one_Page);
+/* GET create Giraffe page */
+router.get('/create', Giraffe_controlers.Giraffe_create_Page);
+
 module.exports = router; 

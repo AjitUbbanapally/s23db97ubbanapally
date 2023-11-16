@@ -50,49 +50,50 @@ block content
       background-color: #45a049;
     }
 
-    /* Add more styles as needed */
-
   h1= title
-  - let Giraffeid = toShow._id
-  - let Giraffe_breed = toShow.Giraffe_breed
-  - let Giraffe_age = toShow.Giraffe_age
-  - let Giraffe_heightfeet = toShow.Giraffe_heightfeet
-  - let actionid=''
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{Giraffeid}
+  if (toShow == null)
+    h2 There is no instance to be updated
+  else
+    - let Giraffeid = toShow._id
+    - let Giraffe_breed = toShow.Giraffe_breed
+    - let Giraffe_age = toShow.Giraffe_age
+    - let Giraffe_heightfeet = toShow.Giraffe_heightfeet
+    - let actionid=''
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{Giraffeid}
 
-  - actionid = "/resource/Giraffe/" + Giraffeid
-  form(id='GiraffeForm', action= actionid, method="PUT")
-    div.form-group
-      label.GiraffeAttr(for='Giraffe_breed') Giraffe breed
-      input#Giraffe_breed(type='text', name='Giraffe_breed', value= Giraffe_breed )
+    - actionid = "/resource/Giraffe/" + Giraffeid
+    form(id='GiraffeForm', action= actionid, method="PUT")
+      div.form-group
+        label.GiraffeAttr(for='Giraffe_breed') Giraffe breed
+        input#Giraffe_breed(type='text', name='Giraffe_breed', value= Giraffe_breed )
 
-    div.form-group
-      label.GiraffeAttr(for='Giraffe_heightfeet') Giraffe height
-      input#Giraffe_heightfeet(type='number', name='Giraffe_heightfeet', value= Giraffe_heightfeet )
+      div.form-group
+        label.GiraffeAttr(for='Giraffe_heightfeet') Giraffe height
+        input#Giraffe_heightfeet(type='number', name='Giraffe_heightfeet', value= Giraffe_heightfeet )
 
-    div.form-group
-      label.GiraffeAttr(for='Giraffe_age') Giraffe age
-      input#Giraffe_age(type='number', name='Giraffe_age', value= Giraffe_age )
+      div.form-group
+        label.GiraffeAttr(for='Giraffe_age') Giraffe age
+        input#Giraffe_age(type='number', name='Giraffe_age', value= Giraffe_age )
 
-    input(type="submit")
+      input(type="submit")
 
-  script.
-    document.forms['GiraffeForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show the user that the form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
-        console.log(actionid)
+    script.
+      document.forms['GiraffeForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show the user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+          console.log(actionid)
+        });
       });
-    });

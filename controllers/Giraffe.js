@@ -3,8 +3,8 @@ var Giraffe = require('../models/Giraffe');
 // List of all Costumes
 exports.Giraffe_list = async function (req, res) {
   try {
-    Giraffe = await Giraffe.find();
-    res.send(Giraffe);
+    result = await Giraffe.find();
+    res.send(result);
   }
   catch (err) {
     res.status(500);

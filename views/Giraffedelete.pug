@@ -1,0 +1,50 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Giraffeid = toShow._id
+    - let Giraffe_breed = toShow.Giraffe_breed
+    - let Giraffe_age = toShow.Giraffe_age
+    - let Giraffe_heightfeet = toShow.Giraffe_heightfeet
+    - let actionid = "/resource/Giraffe/" + Giraffeid
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='GiraffeAttr mr-3') Giraffe ID is:
+        div #{Giraffeid}
+      div.row
+        div(class='GiraffeAttr mr-3') Giraffe breed is:
+        div #{Giraffe_breed}
+      div.row
+        div(class='GiraffeAttr mr-3') Giraffe age is:
+        div #{Giraffe_age}
+      div.row
+        div(class='GiraffeAttr mr-3') Giraffe height is:
+        div #{Giraffe_heightfeet}
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the Giraffe collection
+        window.location.href='/Giraffes'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/Giraffes'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error)
+        });
+      }

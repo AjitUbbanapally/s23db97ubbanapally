@@ -128,7 +128,7 @@ async function recreateDB() {
   });
 
 }
-let reseed = false;
+let reseed = true;
 if (reseed) { recreateDB(); }
 
 

@@ -1,21 +1,30 @@
 extends layout
+
 block content
-    div(class="container-fluid")
-      h1= title
-      - let items= results
-      div(class="row m-1")
-        each item in items
-          - let destination = `dispatch(\"/Giraffe1/update/?id=${item._id}\")`
-          div(class = "col-sm-2 bg-primary" onclick=`buy(${item})`) #{item.Giraffe_breed}              
-          div(class = "col-sm-2 bg-secondary" onclick=`buy(${item})`) #{item.Giraffe_age}                
-          div(class = "col-sm-2 bg-success" onclick=`buy(${item})`) #{item.Giraffe_heightfeet}
-          button.btn( class="btn-primary col-sm-2", onclick= destination) Update
-          hr
-    script.
-        //- function buy(itemNo)
-        //- {
-        //-     alert(`You purchased Item ${itemNo+1}`) 
-        //- } 
-        function dispatch(path){
-            window.location.href=path
-        }
+  div(class="container-fluid")
+    h1= title
+    - let items = results
+    
+    
+    
+    div(class="row m-1")
+      each item in items
+        - let destination_a = `dispatch("/Giraffe1/update/?id=${item._id}")`
+        - let destination_b = `dispatch("/Giraffe1/detail/?id=${item._id}")`
+        - let destination_c = `dispatch("/Giraffe1/delete/?id=${item._id}")`
+        div(class="col-sm-2 bg-primary" onclick=`buy(${item})`) #{item.Giraffe_breed}              
+        div(class="col-sm-2 bg-secondary" onclick=`buy(${item})`) #{item.Giraffe_age}                
+        div(class="col-sm-2 bg-success" onclick=`buy(${item})`) #{item.Giraffe_heightfeet}
+        button.btn(class="btn-primary col-sm-2", onclick=destination_a) Update
+        
+
+        hr
+
+  script.
+    //- function buy(itemNo)
+    //- {
+    //-     alert(`You purchased Item ${itemNo+1}`) 
+    //- } 
+    function dispatch(path){
+      window.location.href = path
+    }

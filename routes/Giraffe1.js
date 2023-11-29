@@ -20,7 +20,7 @@ const secured = (req, res, next) => {
 
 router.get('/detail', Giraffe_controlers.Giraffe_view_one_Page);
 /* GET create Giraffe page */
-router.get('/create', Giraffe_controlers.Giraffe_create_Page);
+router.get('/create',secured, Giraffe_controlers.Giraffe_create_Page);
 /* GET create update page */
 //router.get('/update', Giraffe_controlers.Giraffe_update_Page);
 
@@ -35,11 +35,10 @@ router.get('/update',secured, Giraffe_controlers.Giraffe_update_Page);
 
 
 /* GET update Giraffe page */
-router.get('/update', secured,
-Giraffe_controlers.Giraffe_update_Page);
+router.get('/update', secured, Giraffe_controlers.Giraffe_update_Page);
 
 
 /* GET delete Giraffe page */
-router.get('/delete', Giraffe_controlers.Giraffe_delete_Page);
+router.get('/delete',secured, Giraffe_controlers.Giraffe_delete_Page);
 
 module.exports = router; 

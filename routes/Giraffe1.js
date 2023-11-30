@@ -24,6 +24,7 @@ router.get('/create',secured, Giraffe_controlers.Giraffe_create_Page);
 /* GET create update page */
 //router.get('/update', Giraffe_controlers.Giraffe_update_Page);
 
+/* GET update Giraffe page */
 router.get('/update',secured, Giraffe_controlers.Giraffe_update_Page);
 // router.post('/login', passport.authenticate('local'), function(req, res) {
 //     res.redirect('/');
@@ -34,8 +35,8 @@ router.get('/update',secured, Giraffe_controlers.Giraffe_update_Page);
 
 
 
-/* GET update Giraffe page */
-router.get('/update', secured, Giraffe_controlers.Giraffe_update_Page);
+
+//router.get('/update', secured, Giraffe_controlers.Giraffe_update_Page);
 
 
 /* GET delete Giraffe page */
